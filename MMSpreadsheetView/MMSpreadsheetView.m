@@ -765,6 +765,30 @@ const static NSUInteger MMScrollIndicatorTag = 12345;
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    switch (collectionView.tag) {
+        case MMSpreadsheetViewCollectionUpperLeft:
+            break;
+        case MMSpreadsheetViewCollectionUpperRight:
+            if ([self.delegate respondsToSelector:@selector(spreadsheetView:willDisplayCell:forHeaderOfColumn:)]) {
+                [self.delegate spreadsheetView:self willDisplayCell:cell forHeaderOfColumn:indexPath.row];
+            }
+            break;
+        case MMSpreadsheetViewCollectionLowerLeft:
+            if ([self.delegate respondsToSelector:@selector(spreadsheetView:willDisplayCell:forHeaderOfRow:)]) {
+                [self.delegate spreadsheetView:self willDisplayCell:cell forHeaderOfRow:indexPath.section];
+            }
+            break;
+        case MMSpreadsheetViewCollectionLowerRight:
+            if ([self.delegate respondsToSelector:@selector(spreadsheetView:willDisplayCell:forItemAtIndexPath:)]) {
+                [self.delegate spreadsheetView:self willDisplayCell:cell forItemAtIndexPath:indexPath];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

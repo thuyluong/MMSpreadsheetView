@@ -173,6 +173,11 @@
  */
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
 
+
+- (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forHeaderOfRow:(NSInteger)row;
+- (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forHeaderOfColumn:(NSInteger)column;
+- (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
