@@ -20,6 +20,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, MMSpreadsheetViewCollection) {
+    MMSpreadsheetViewCollectionUpperLeft = 1,
+    MMSpreadsheetViewCollectionUpperRight,
+    MMSpreadsheetViewCollectionLowerLeft,
+    MMSpreadsheetViewCollectionLowerRight,
+};
+
 @class MMSpreadsheetView;
 
 /**
@@ -177,6 +184,8 @@
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forHeaderOfRow:(NSInteger)row;
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forHeaderOfColumn:(NSInteger)column;
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView scrollViewDidEndDecelerating:(UIScrollView *)scrollView collectionViewType:(MMSpreadsheetViewCollection)type;
 
 @end
 

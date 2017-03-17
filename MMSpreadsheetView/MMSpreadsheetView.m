@@ -23,13 +23,6 @@
 #import "MMGridLayout.h"
 #import "NSIndexPath+MMSpreadsheetView.h"
 
-typedef NS_ENUM(NSUInteger, MMSpreadsheetViewCollection) {
-    MMSpreadsheetViewCollectionUpperLeft = 1,
-    MMSpreadsheetViewCollectionUpperRight,
-    MMSpreadsheetViewCollectionLowerLeft,
-    MMSpreadsheetViewCollectionLowerRight,
-};
-
 typedef NS_ENUM(NSUInteger, MMSpreadsheetHeaderConfiguration) {
     MMSpreadsheetHeaderConfigurationNone = 0,
     MMSpreadsheetHeaderConfigurationColumnOnly,
@@ -964,6 +957,9 @@ const static NSUInteger MMScrollIndicatorTag = 12345;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self scrollViewDidStop:scrollView];
+    if ([self.delegate respondsToSelector:@selector(spreadsheetView:scrollViewDidEndDecelerating:collectionViewType:)]) {
+        [self.delegate spreadsheetView:self scrollViewDidEndDecelerating:scrollView collectionViewType:scrollView.tag];
+    }
 }
 
 - (void)scrollViewDidStop:(UIScrollView *)scrollView {
