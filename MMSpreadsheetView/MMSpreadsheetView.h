@@ -186,6 +186,8 @@ typedef NS_ENUM(NSUInteger, MMSpreadsheetViewCollection) {
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)spreadsheetView:(MMSpreadsheetView *)spreadsheetView scrollViewDidEndDecelerating:(UIScrollView *)scrollView collectionViewType:(MMSpreadsheetViewCollection)type;
+- (void)spreasheetView:(MMSpreadsheetView *)spreadsheetView scrollViewDidScroll:(UIScrollView *)scrollView collectionViewType:(MMSpreadsheetViewCollection)type;
+
 
 @end
 

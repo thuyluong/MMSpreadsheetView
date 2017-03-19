@@ -786,7 +786,6 @@ const static NSUInteger MMScrollIndicatorTag = 12345;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.controllingScrollView) {
-    
         switch (scrollView.tag) {
             case MMSpreadsheetViewCollectionLowerLeft:
                 [self lowerLeftCollectionViewDidScrollForScrollView:scrollView];
@@ -799,6 +798,9 @@ const static NSUInteger MMScrollIndicatorTag = 12345;
             case MMSpreadsheetViewCollectionLowerRight:
                 [self lowerRightCollectionViewDidScrollForScrollView:scrollView];
                 break;
+        }
+        if ([self.delegate respondsToSelector:@selector(spreasheetView:scrollViewDidScroll:collectionViewType:)]) {
+            [self.delegate spreasheetView:self scrollViewDidScroll:scrollView collectionViewType:scrollView.tag];
         }
     } else {
         [scrollView setContentOffset:scrollView.contentOffset animated:NO];
